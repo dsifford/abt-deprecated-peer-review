@@ -10,12 +10,12 @@
  */
 
 function enqueue_abt_peer_review_admin_scripts() {
-    global $post_type;
+    global $pagenow;
 
-    if (!$post_type || $post_type === 'attachment') return;
+    if ($pagenow != 'post.php') return;
 
     wp_enqueue_media();
-    wp_enqueue_style('abt_styles', plugins_url('abt-peer-review/styles.css'));
+    wp_enqueue_style('abt-depreciated-peer-review-style', plugins_url('abt-peer-review/styles.css'));
     wp_enqueue_script('abt-PR-metabox', plugins_url('abt-peer-review/peer-review-metabox.js'), [], false, true);
 }
 add_action('admin_enqueue_scripts', 'enqueue_abt_peer_review_admin_scripts');
