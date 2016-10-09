@@ -15,17 +15,17 @@ function enqueue_abt_peer_review_admin_scripts() {
     if ($pagenow != 'post.php') return;
 
     wp_enqueue_media();
-    wp_enqueue_style('abt-deprecated-peer-review-style', plugins_url('abt-peer-review/styles.css'));
-    wp_enqueue_script('abt-PR-metabox', plugins_url('abt-peer-review/peer-review-metabox.js'), [], false, true);
+    wp_enqueue_style('abt-deprecated-peer-review-style', plugins_url('abt-deprecated-peer-review/styles.css'));
+    wp_enqueue_script('abt-PR-metabox', plugins_url('abt-deprecated-peer-review/peer-review-metabox.js'), [], false, true);
 }
 add_action('admin_enqueue_scripts', 'enqueue_abt_peer_review_admin_scripts');
 
 function enqueue_abt_peer_review_frontend_js() {
     wp_enqueue_style('dashicons');
-	wp_enqueue_style('abt-deprecated-peer-review-style', plugins_url('abt-peer-review/styles.css'), ['dashicons']);
+	wp_enqueue_style('abt-deprecated-peer-review-style', plugins_url('abt-deprecated-peer-review/styles.css'), ['dashicons']);
 
     if (is_singular()) {
-        wp_enqueue_script('abt-deprecated-peer-review-js', plugins_url('abt-peer-review/frontend.js'));
+        wp_enqueue_script('abt-deprecated-peer-review-js', plugins_url('abt-deprecated-peer-review/frontend.js'));
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_abt_peer_review_frontend_js');
