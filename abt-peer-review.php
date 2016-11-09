@@ -12,7 +12,7 @@
 function enqueue_abt_peer_review_admin_scripts() {
     global $pagenow;
 
-    if ($pagenow != 'post.php') return;
+    if ($pagenow != 'post.php' || $pagenow != 'post-new.php') return;
 
     wp_enqueue_media();
     wp_enqueue_style('abt-deprecated-peer-review-style', plugins_url('abt-deprecated-peer-review/styles.css'));
