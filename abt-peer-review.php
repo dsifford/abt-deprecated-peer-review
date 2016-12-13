@@ -12,7 +12,7 @@
 function enqueue_abt_peer_review_admin_scripts() {
     global $pagenow;
 
-    if ($pagenow != 'post.php' || $pagenow != 'post-new.php') return;
+    if ($pagenow != 'post.php' && $pagenow != 'post-new.php') return;
 
     wp_enqueue_media();
     wp_enqueue_style('abt-deprecated-peer-review-style', plugins_url('abt-deprecated-peer-review/styles.css'));
@@ -128,7 +128,9 @@ function save_abt_peer_review_meta($post_id) {
     }
 
     // Begin Saving Meta Variables
-    $new_PR_meta['peer_review']['selection'] = esc_attr($_POST[ 'reviewer_selector' ]);
+    $new_PR_meta['peer_review']['selection'] = isset($_POST[ 'reviewer_selector' ])
+        ? esc_attr($_POST[ 'reviewer_selector' ])
+        : '';
 
     for ($i = 1; $i < 4; ++$i) {
         $new_PR_meta['peer_review'][$i]['heading'] = isset($_POST[ 'peer_review_box_heading_'.$i ])
